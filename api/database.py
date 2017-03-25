@@ -43,7 +43,7 @@ class Database:
         return self.execute_query(sql, (destination, rating))
 
     def retrieve_packages(self, destination, ndays = ''):
-        sql = "SELECT * FROM {} WHERE  destinationplacename = %s {}" \
+        sql = "SELECT * FROM {} WHERE  destinationplacename = %s " \
               "and categorydescription = 'Tour' ORDER BY productadvertisedprice " \
               "ASC limit 3".format('"Hackathon"."Procat"')
         return self.execute_query(sql, (destination,))
