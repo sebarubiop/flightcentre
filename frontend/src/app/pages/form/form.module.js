@@ -18,7 +18,7 @@
           templateUrl: 'app/pages/form/wizard/wizard.html',
           controller: 'WizardCtrl',
           controllerAs: 'vm',
-          title: 'Form Wizard',
+          title: 'Quote',
           sidebarMeta: {
             order: 0,
           },

@@ -1,3 +1,11 @@
+<style>
+    #scrollable-dropdown-menu .dropdown-menu {
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+</style>
+
 <div class="widgets">
 
     <div class="row">
@@ -11,25 +19,25 @@
                                     <div class="form-group has-feedback"
                                          ng-class="{'has-error': vm.personalInfoForm.username.$invalid && (vm.personalInfoForm.username.$dirty || vm.personalInfoForm.$submitted)}">
                                         <label for="exampleUsername1">Given Name</label>
-                                        <input type="text" class="form-control" id="exampleUsername1" name="username" placeholder="Full name" ng-model="personalInfo.givenname" >
+                                        <input type="text" class="form-control" id="exampleUsername1" name="username" placeholder="Given Name" ng-model="personalInfo.givenname" autocomplete="off">
                                         <span class="help-block error-block basic-block">Required</span>
                                     </div>
                                     <div class="form-group has-feedback"
                                          ng-class="{'has-error': vm.personalInfoForm.username.$invalid && (vm.personalInfoForm.username.$dirty || vm.personalInfoForm.$submitted)}">
                                         <label for="exampleUsername1">Family Name</label>
-                                        <input type="text" class="form-control" id="exampleUsername1" name="username" placeholder="Full name" ng-model="personalInfo.familyname" >
+                                        <input type="text" class="form-control" id="exampleUsername1" name="username" placeholder="Family Name" ng-model="personalInfo.familyname" autocomplete="off">
                                         <span class="help-block error-block basic-block">Required</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">                                    
                                     <div class="form-group" ng-class="{'has-error': vm.personalInfoForm.email.$invalid && (vm.personalInfoForm.email.$dirty || vm.personalInfoForm.$submitted)}">
                                         <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" ng-model="personalInfo.email" >
+                                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" ng-model="personalInfo.email">
                                         <span class="help-block error-block basic-block">Proper email required</span>
                                     </div>
                                     <div class="form-group" ng-class="{'has-error': vm.personalInfoForm.postcode.$invalid && (vm.personalInfoForm.postcode.$dirty || vm.personalInfoForm.$submitted)}">
                                         <label for="postcodeInput">Postcode</label>
-                                        <input type="text" class="form-control" id="postcodeInput" name="postcode" placeholder="Postcode" ng-model="personalInfo.postcode" >
+                                        <input type="text" class="form-control" id="postcodeInput" name="postcode" placeholder="Postcode" ng-model="personalInfo.postcode" autocomplete="off">
                                     </div>
                                     
                                 </div>
@@ -48,11 +56,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group has-feedback"
-                                         ng-class="{'has-error': vm.travelInfoForm.destination.$invalid && (vm.travelInfoForm.destination.$dirty || vm.travelInfoForm.$submitted)}">
-                                        <label for="destination">Destination</label>
-                                        <input type="text" class="form-control" id="destination" name="destination" placeholder="City or Place" value="London" ng-model="travelInfo.destination">
-                                        <span class="help-block error-block basic-block">Required</span>
+                                    
+                                    <div class="form-group" id="scrollable-dropdown-menu">
+                                        <label>Destination</label>
+                                        <input name="places" type="text" ng-model="travelInfo.destination" placeholder="Search a Destination" uib-typeahead="place as place.place for place in destinations | filter:{place:$viewValue} | limitTo:50"
+                                            class="form-control" typeahead-show-hint="true" typeahead-min-length="1" typeahead-focus-first="true" typeahead-no-results="noresult"
+                                            typeahead-select-on-blur="true" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -163,9 +172,12 @@
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
+                                
+                                <div class="form-group">
+                                    <div class="col-md-22">
                                         <label >More information</label>
+                                    </div>
+                                    <div class="col-md-10">
                                         <input type="text" tag-input="danger" ng-model="travelInfo.tags" data-role="tagsinput" placeholder="Add Tag">
                                     </div>
                                 </div>
@@ -176,7 +188,7 @@
                     <ba-wizard-step title="Finish">
                         <form class="form-horizontal" name="vm.finishForm" novalidate>
                             Congratulations! You have successfully filled the form!
-                            <div class="button-wrapper"><a href="#/bestquote/{{travelInfo.origin}}/{{travelInfo.destination}}/{{travelInfo.category}}" class="btn btn-success btn-raised">BEST QUOTE</a></div>
+                            <div class="button-wrapper"><a href="#/bestquote/{{travelInfo.origin}}/{{travelInfo.destination}}/{{travelInfo.category}}/{{travelInfo.duration}}" class="btn btn-success btn-raised">BEST QUOTE</a></div>
                             <!--<div class="button-wrapper"><button type="button" ng-click="goPlan()" class="btn btn-danger btn-raised"><b>SHOW RECOMMENDATIONS</b></button></div>-->
                         </form>
                     </ba-wizard-step>
