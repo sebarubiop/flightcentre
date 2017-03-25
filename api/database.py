@@ -43,12 +43,9 @@ class Database:
         return self.execute_query(sql, (destination, rating))
 
     def retrieve_packages(self, destination, ndays = ''):
-        ndays_sql = ''
-        if ndays:
-            ndays_sql = ' and durationvalue = %s '
         sql = "SELECT * FROM {} WHERE  destinationplacename = %s {}" \
               "and categorydescription = 'Tour' ORDER BY productadvertisedprice " \
-              "ASC limit 3".format('"Hackathon"."Procat"', ndays_sql)
+              "ASC limit 3".format('"Hackathon"."Procat"')
         return self.execute_query(sql, (destination, ndays))
 
     def retrieve_destinations(self):
@@ -61,8 +58,9 @@ class Database:
         return self.execute_query(sql)
 
     def retrieve_rec_destinations(self, origin):
-        sql = "select q.qdquoteorigin, i1.iatacity, q.qdquotedestination, i2.iatacity, count(*) as n from {} q, {} i1, {} i2 " \
-            "where i1.iata = q.qdquoteorigin and i2.iata = q.qdquotedestination and q.qdquoteenquirysource = 'Walk-in' " \
+        sql = "select q.qdquoteorigin, i1.iatacity, q.qdquotedestination, i2.iatacity, count(*) as n, avg(qdquoteinvoiceamount) as p" \
+              " from {} q, {} i1, {} i2 " \
+            " where i1.iata = q.qdquoteorigin and i2.iata = q.qdquotedestination and q.qdquoteenquirysource = 'Walk-in' " \
               "and i1.iatacity = %s and i2.iatacity != %s " \
             "group by q.qdquoteorigin,i1.iatacity, i2.iatacity, q.qdquotedestination order by n DESC " \
             "limit 20".format('"Hackathon"."QuickdoxQuotes"','"Hackathon"."IATA"', '"Hackathon"."IATA"')
