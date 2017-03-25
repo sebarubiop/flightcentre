@@ -46,7 +46,7 @@ class Database:
         sql = "SELECT * FROM {} WHERE  destinationplacename = %s {}" \
               "and categorydescription = 'Tour' ORDER BY productadvertisedprice " \
               "ASC limit 3".format('"Hackathon"."Procat"')
-        return self.execute_query(sql, (destination, ndays))
+        return self.execute_query(sql, (destination,))
 
     def retrieve_destinations(self):
         sql = "select distinct(destinationplacename) as place from {} ".format('"Hackathon"."Procat"')
