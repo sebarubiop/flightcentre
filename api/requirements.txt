@@ -1,4 +1,5 @@
 Flask
 Flask_Cors
-PyMySQL
+psycopg2
 gunicorn
+requests

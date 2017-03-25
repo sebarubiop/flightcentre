@@ -1,8 +1,7 @@
 from __future__ import print_function
-import psycopg2, datetime, time, psycopg2.extras
+import psycopg2, datetime, time, psycopg2.extras, json, collections
 from sabre import Sabre
 from config import HOST, USER, PASS, DBNAME
-
 from math import radians, cos, sin, asin, sqrt
 
 class Database:
@@ -51,6 +50,29 @@ class Database:
               "and categorydescription = 'Tour' ORDER BY productadvertisedprice " \
               "ASC limit 3".format('"Hackathon"."Procat"', ndays_sql)
         return self.execute_query(sql, (destination, ndays))
+
+    def retrieve_destinations(self):
+        sql = "select distinct(destinationplacename) as place from {} ".format('"Hackathon"."Procat"')
+        results =  self.execute_query(sql)
+        objects_list = []
+        for row in results:
+            d = collections.OrderedDict()
+            d['place'] = row['place']
+            objects_list.append(d)
+
+        return json.dumps(objects_list)
+
+    def retrieve_origins(self):
+        sql = "select DISTINCT(split_part(productpackagename, ' ' , 1 )) as origin from  \"Hackathon\".\"Procat\" " \
+              "where categorydescription = 'Air Transportation'"
+        results =  self.execute_query(sql)
+        objects_list = []
+        for row in results:
+            d = collections.OrderedDict()
+            d['place'] = row['origin']
+            objects_list.append(d)
+
+        return json.dumps(objects_list)
 
 
     def retrieve_fares_prediction(self):

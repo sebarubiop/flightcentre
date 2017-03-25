@@ -54,6 +54,17 @@ def find_tours(destination, ndays):
     results = db.retrieve_packages(destination, ndays)
     return flask.jsonify(results=results)
 
+@app.route('/destinations')
+def find_destinations():
+    db = Database()
+    results = db.retrieve_destinations()
+    return flask.jsonify(results=results)
+
+@app.route('/origins')
+def find_origins():
+    db = Database()
+    results = db.retrieve_origins()
+    return flask.jsonify(results=results)
 
 if __name__ == '__main__':
     app.run(port=5000, host='0.0.0.0')
