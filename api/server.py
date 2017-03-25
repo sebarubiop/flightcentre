@@ -66,5 +66,11 @@ def find_origins():
     results = db.retrieve_origins()
     return flask.jsonify(results=results)
 
+@app.route('/recommended_destinations/<origin>')
+def find_recommendations(origin):
+    db = Database()
+    results = db.retrieve_rec_destinations(origin)
+    return flask.jsonify(results=results)
+
 if __name__ == '__main__':
     app.run(port=5000, host='0.0.0.0')

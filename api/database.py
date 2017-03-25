@@ -60,6 +60,14 @@ class Database:
               "where categorydescription = 'Air Transportation'"
         return self.execute_query(sql)
 
+    def retrieve_rec_destinations(self, origin):
+        sql = "select q.qdquoteorigin, i1.iatacity, q.qdquotedestination, i2.iatacity, count(*) as n from {} q, {} i1, {} i2 " \
+            "where i1.iata = q.qdquoteorigin and i2.iata = q.qdquotedestination and q.qdquoteenquirysource = 'Walk-in' " \
+              "and i1.iatacity = %s and i2.iatacity != %s " \
+            "group by q.qdquoteorigin,i1.iatacity, i2.iatacity, q.qdquotedestination order by n DESC " \
+            "limit 20".format('"Hackathon"."QuickdoxQuotes"','"Hackathon"."IATA"', '"Hackathon"."IATA"')
+        return self.execute_query(sql, (origin,origin))
+
     def retrieve_fares_prediction(self):
         return \
         {'sabre_prediction' :
