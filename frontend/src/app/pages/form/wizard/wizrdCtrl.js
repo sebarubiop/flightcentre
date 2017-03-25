@@ -5,11 +5,35 @@
       .controller('WizardCtrl', WizardCtrl);
 
   /** @ngInject */
-  function WizardCtrl($scope,$state) {
+  function WizardCtrl($scope,$state,$http) {
   //  var vm = this;
 
     $scope.personalInfo = {};
     $scope.travelInfo = {};
+    
+    var api_url = 'http://ec2-13-55-207-243.ap-southeast-2.compute.amazonaws.com:5000/';
+
+    $http({
+      url: api_url+'destinations', 
+      method: "GET"
+    })
+    .then(function(response) {
+        $scope.destinations = response.data.results;
+        
+        console.log($scope.destinations)
+        
+    });
+
+    
+    $http({
+      url: api_url+'origins', 
+      method: "GET"
+    })
+    .then(function(response) {
+        $scope.origins = response.data.results;
+        // console.log($scope.origins)
+        
+    });
 
     $scope.dateOptionsStart = {
     showWeeks: false,
@@ -42,14 +66,28 @@
     // vm.arePersonalInfoPasswordsEqual = function () {
     //   return vm.personalInfo.confirmPassword && vm.personalInfo.password == vm.personalInfo.confirmPassword;
     // };
-    $scope.goBestQuote = function(){
-        $state.go('bestquote',{origin:$scope.travelInfo.origin,destination:$scope.travelInfo.destination,category:$scope.travelInfo.category});
+    // $scope.goBestQuote = function(){
+    //     $state.go('bestquote',{origin:$scope.travelInfo.origin,destination:$scope.travelInfo.destination,category:$scope.travelInfo.category});
+    // }
+
+    // $scope.goPlan = function(){
+    //   console.log('start',$scope.travelInfo.start)
+    //   console.log('end',$scope.travelInfo.end)
+    // }
+    var diffDays = function (firstDate, secondDate) {
+      var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
+      return diffDays;
     }
 
-    $scope.goPlan = function(){
-      console.log('start',$scope.travelInfo.start)
-      console.log('end',$scope.travelInfo.end)
-    }
+    $scope.$watch('travelInfo.end', function (v) {
+
+      // console.log($scope.travelInfo.start);
+      // console.log(v);
+      $scope.travelInfo.duration = diffDays($scope.travelInfo.start,v);
+      // console.log('$scope.travelInfo.duration ',$scope.travelInfo.duration );
+    });
+
   }
 
 })();
