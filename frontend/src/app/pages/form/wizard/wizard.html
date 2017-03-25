@@ -1,0 +1,188 @@
+<div class="widgets">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="User Profile" ba-panel-class="with-scroll">
+                <ba-wizard>
+                    <ba-wizard-step title="Personal info" form="vm.personalInfoForm">
+                        <form name="vm.personalInfoForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.personalInfoForm.username.$invalid && (vm.personalInfoForm.username.$dirty || vm.personalInfoForm.$submitted)}">
+                                        <label for="exampleUsername1">Given Name</label>
+                                        <input type="text" class="form-control" id="exampleUsername1" name="username" placeholder="Full name" ng-model="personalInfo.givenname" >
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.personalInfoForm.username.$invalid && (vm.personalInfoForm.username.$dirty || vm.personalInfoForm.$submitted)}">
+                                        <label for="exampleUsername1">Family Name</label>
+                                        <input type="text" class="form-control" id="exampleUsername1" name="username" placeholder="Full name" ng-model="personalInfo.familyname" >
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">                                    
+                                    <div class="form-group" ng-class="{'has-error': vm.personalInfoForm.email.$invalid && (vm.personalInfoForm.email.$dirty || vm.personalInfoForm.$submitted)}">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" ng-model="personalInfo.email" >
+                                        <span class="help-block error-block basic-block">Proper email required</span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': vm.personalInfoForm.postcode.$invalid && (vm.personalInfoForm.postcode.$dirty || vm.personalInfoForm.$submitted)}">
+                                        <label for="postcodeInput">Postcode</label>
+                                        <input type="text" class="form-control" id="postcodeInput" name="postcode" placeholder="Postcode" ng-model="personalInfo.postcode" >
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </ba-wizard-step>
+                    <ba-wizard-step title="Travel info" form="vm.travelInfoForm">
+                        <form name="vm.travelInfoForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.travelInfoForm.origin.$invalid && (vm.travelInfoForm.origin.$dirty || vm.travelInfoForm.$submitted)}">
+                                        <label for="origin">Origin</label>
+                                        <input type="text" class="form-control" id="origin" name="origin" placeholder="City or Place" ng-model="travelInfo.origin">
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.travelInfoForm.destination.$invalid && (vm.travelInfoForm.destination.$dirty || vm.travelInfoForm.$submitted)}">
+                                        <label for="destination">Destination</label>
+                                        <input type="text" class="form-control" id="destination" name="destination" placeholder="City or Place" ng-model="travelInfo.destination">
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Start date</label>
+                                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="travelInfo.start" is-open="focus" ng-focus="focus=true"
+                                            ng-change="focus1=true" datepicker-options="dateOptionsStart" ng-required="true" show-button-bar="false" alt-input-formats="altInputFormats"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>End Date</label>
+                                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="travelInfo.end" is-open="focus1" ng-focus="focus1=true"
+                                            datepicker-options="dateOptionsEnd" show-button-bar="false" ng-required="true" alt-input-formats="altInputFormats"
+                                        />
+                                    </div>
+                                       
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                    
+										<label>Experiences</label>
+									</div>
+									<div class="col-md-10">
+										
+											<div class="checkbox-inline">
+												<label><input type="checkbox" name="traveltype" ng-model="travelInfo.city"> City Highlights</label>
+											</div>
+											<div class="checkbox-inline">
+												<label><input type="checkbox" name="traveltype" ng-model="travelInfo.cultural"> Cultural</label>
+											</div>
+										
+											<div class="checkbox-inline">
+												<label><input type="checkbox" name="traveltype" ng-model="travelInfo.luxury"> Luxury</label>
+											</div>
+											<div class="checkbox-inline">
+												<label><input type="checkbox" name="traveltype" ng-model="travelInfo.beach"> Beach</label>
+											</div>
+										
+										
+										<div class="checkbox-inline">
+											<label><input type="checkbox" name="traveltype" ng-model="travelInfo.nature"> Nature</label>
+										</div>
+										<div class="checkbox-inline">
+											<label><input type="checkbox" name="traveltype" ng-model="travelInfo.adventure"> Adventure</label>
+										</div>
+									
+										<div class="checkbox-inline">
+											<label><input type="checkbox" name="traveltype" ng-model="travelInfo.nightlife"> Nightlife</label>
+										</div>
+									
+									</div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+										<label>Who is traveling?</label>
+									</div>
+									<div class="col-md-10">
+										<div class="radio-inline">
+											<label><input type="radio" ng-model="travelInfo.travelers" name="travelers" value="Single"> Single</label>
+										</div>
+									
+										<div class="radio-inline">
+											<label><input type="radio" ng-model="travelInfo.travelers" name="travelers" value="Pair"> Pair</label>
+										</div>
+									
+										<div class="radio-inline">
+											<label><input type="radio" ng-model="travelInfo.travelers" name="travelers" value="Family"> Family</label>
+										</div>
+									
+										<div class="radio-inline">
+											<label><input type="radio" ng-model="travelInfo.travelers" name="travelers" value="Small group"> Small group</label>
+										</div>
+                                        <div class="radio-inline">
+											<label><input type="radio" ng-model="travelInfo.travelers" name="travelers" value="Large Group"> Large Group</label>
+										</div>
+                                        <div class="radio-inline">
+											<label><input type="radio" ng-model="travelInfo.travelers" name="travelers" value="Other"> Other</label>
+										</div>
+										
+									</div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label for="Category">Category</label>
+                                    </div>
+                                        <div class="col-md-4">
+                                            <select class="form-control" name="Category" ng-model="travelInfo.category">
+                                                <option selected>First class</option>
+                                                <option>Student</option>
+                                                <option>Economy</option>
+                                                <option>Business class</option>
+                                                <option>Economy</option>
+                                            </select>
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label >More information</label>
+                                        <input type="text" tag-input="danger" ng-model="travelInfo.tags" data-role="tagsinput" placeholder="Add Tag">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </ba-wizard-step>
+                    
+                    <ba-wizard-step title="Finish">
+                        <form class="form-horizontal" name="vm.finishForm" novalidate>
+                            Congratulations! You have successfully filled the form!
+                            <div class="button-wrapper"><a href="#/bestquote/{{travelInfo.origin}}/{{travelInfo.destination}}/{{travelInfo.category}}" class="btn btn-success btn-raised">BEST QUOTE</a></div>
+                            <!--<div class="button-wrapper"><button type="button" ng-click="goPlan()" class="btn btn-danger btn-raised"><b>SHOW RECOMMENDATIONS</b></button></div>-->
+                        </form>
+                    </ba-wizard-step>
+                </ba-wizard>
+            </div>
+        </div>
+    </div>
+
+</div>
