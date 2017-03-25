@@ -9,14 +9,11 @@
   function routeConfig($stateProvider) {
     $stateProvider
         .state('bestquote', {
-          url: '/bestquote',
+          url: '/bestquote/:origin/:destination/:category',
           templateUrl: 'app/pages/bestquote/bestquote.html',
           title: 'best quote',
-          sidebarMeta: {
-            icon: 'ion-android-home',
-            order: 1000,
-          },
-          
+          controller: 'BestQuoteCtrl',
+          controllerAs: 'bqctrl',
         });
   }
 

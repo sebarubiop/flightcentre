@@ -43,7 +43,7 @@
     //   return vm.personalInfo.confirmPassword && vm.personalInfo.password == vm.personalInfo.confirmPassword;
     // };
     $scope.goBestQuote = function(){
-        $state.go('bestquote');
+        $state.go('bestquote',{origin:$scope.travelInfo.origin,destination:$scope.travelInfo.destination,category:$scope.travelInfo.category});
     }
 
     $scope.goPlan = function(){

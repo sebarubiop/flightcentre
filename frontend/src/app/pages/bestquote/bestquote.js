@@ -6,9 +6,9 @@
       .controller('BestQuoteCtrl', BestQuoteCtrl);
 
   /** @ngInject */
-  function BestQuoteCtrl($scope) {
+  function BestQuoteCtrl($scope,$stateParams) {
     
-
+    console.log($stateParams)
     
   }
 })();
