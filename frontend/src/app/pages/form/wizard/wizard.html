@@ -43,7 +43,7 @@
                                     <div class="form-group has-feedback"
                                          ng-class="{'has-error': vm.travelInfoForm.origin.$invalid && (vm.travelInfoForm.origin.$dirty || vm.travelInfoForm.$submitted)}">
                                         <label for="origin">Origin</label>
-                                        <input type="text" class="form-control" id="origin" name="origin" placeholder="City or Place" ng-model="travelInfo.origin">
+                                        <input type="text" class="form-control" id="origin" name="origin" placeholder="City or Place" value="Sydney" ng-model="travelInfo.origin">
                                         <span class="help-block error-block basic-block">Required</span>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     <div class="form-group has-feedback"
                                          ng-class="{'has-error': vm.travelInfoForm.destination.$invalid && (vm.travelInfoForm.destination.$dirty || vm.travelInfoForm.$submitted)}">
                                         <label for="destination">Destination</label>
-                                        <input type="text" class="form-control" id="destination" name="destination" placeholder="City or Place" ng-model="travelInfo.destination">
+                                        <input type="text" class="form-control" id="destination" name="destination" placeholder="City or Place" value="London" ng-model="travelInfo.destination">
                                         <span class="help-block error-block basic-block">Required</span>
                                     </div>
                                 </div>
@@ -151,9 +151,9 @@
                                     </div>
                                         <div class="col-md-4">
                                             <select class="form-control" name="Category" ng-model="travelInfo.category">
-                                                <option selected>First class</option>
+                                                <option>First class</option>
                                                 <option>Student</option>
-                                                <option>Economy</option>
+                                                <option selected>Economy</option>
                                                 <option>Business class</option>
                                                 <option>Economy</option>
                                             </select>
