@@ -1,6 +1,6 @@
 [database]
 
-HOST = ec2-34-204-142-115.compute-1.amazonaws.com
+HOST = ec2-34-206-169-254.compute-1.amazonaws.com
 DBNAME = d47vqskr9odou4
-USER = u9loqfj9kviqpp
-PASS = p4d4524a9d29b3cc5391284337e8cbcd73b17e9f93e81dcb00b20deed114fb219
+USER = ualagn1jjig19a
+PASS = pb70b3a974284493bcda74b02dabbe7758d8c3c64ef175d38deb4af96806465e4
