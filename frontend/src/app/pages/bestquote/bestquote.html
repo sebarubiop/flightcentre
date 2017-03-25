@@ -8,6 +8,7 @@
     }
 </style>
 
+<h2>Trip: <b>{{request.origin}} - {{request.destination}}</b></h2>
 <div class="row ">
     <div class="col-md-4">
         <div ba-panel ba-panel-title="Flight">
@@ -16,8 +17,8 @@
         
         <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
         <div class="box-shadow-border"></div>
-        <ul class="todo-list" ui-sortable ng-model="flights">
-            <li ng-repeat="item in flights" ng-if="!item.deleted" ng-init="activeItem=false"
+        <ul class="todo-list" ui-sortable ng-model="flightsLondon">
+            <li ng-repeat="item in flightsLondon" ng-if="!item.deleted" ng-init="activeItem=false"
                 ng-class="{checked: isChecked, active: activeItem}"
                 ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
             <div class="blur-container"><div class="blur-box"></div></div>
@@ -41,8 +42,8 @@
         
         <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
         <div class="box-shadow-border"></div>
-        <ul class="todo-list" ui-sortable ng-model="accommodation">
-            <li ng-repeat="item in accommodation" ng-if="!item.deleted" ng-init="activeItem=false"
+        <ul class="todo-list" ui-sortable ng-model="accommodationLondon">
+            <li ng-repeat="item in accommodationLondon" ng-if="!item.deleted" ng-init="activeItem=false"
                 ng-class="{checked: isChecked, active: activeItem}"
                 ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
             <div class="blur-container"><div class="blur-box"></div></div>
@@ -68,8 +69,8 @@
         
         <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
         <div class="box-shadow-border"></div>
-        <ul class="todo-list" ui-sortable ng-model="tours">
-            <li ng-repeat="item in tours" ng-if="!item.deleted" ng-init="activeItem=false"
+        <ul class="todo-list" ui-sortable ng-model="toursLondon">
+            <li ng-repeat="item in toursLondon" ng-if="!item.deleted" ng-init="activeItem=false"
                 ng-class="{checked: isChecked, active: activeItem}"
                 ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
             <div class="blur-container"><div class="blur-box"></div></div>
@@ -96,90 +97,345 @@
         <div class="row ">
 
             <uib-accordion>
-  <uib-accordion-group is-open="true" heading="Static Header, initially expanded" panel-class="panel-primary bootstrap-panel accordion-panel panel-default">
-    <div class="col-md-4">
-                <div ba-panel>
-                <h4>Flight</h4>
-            
+            <uib-accordion-group is-open="true" panel-class="panel-primary bootstrap-panel accordion-panel panel-default">
+                <uib-accordion-heading>
+                <b>Paris</b>
+                </uib-accordion-heading>
+                <div class="col-md-4">
+                    <div ba-panel ba-panel-title="Flight">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="flightsParis">
+                        <li ng-repeat="item in flightsParis" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }} </span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div ba-panel>
-                <h4>Accomodation</h4>
-            
+                <div class="col-md-4">
+                    
+                    <div ba-panel ba-panel-title="Accomodation">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="accommodationParis">
+                        <li ng-repeat="item in accommodationParis" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }}</span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                            
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+                
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div ba-panel>
-                <h4>Package</h4>
-            
+                <div class="col-md-4">
+                    
+                    <div ba-panel ba-panel-title="Tours">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="toursParis">
+                        <li ng-repeat="item in toursParis" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }}</span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                            
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+                
+                
                 </div>
-            </div>
-  </uib-accordion-group>
-  <uib-accordion-group heading="Dynamic Body Content" panel-class="panel-success bootstrap-panel accordion-panel panel-default">
-    <div class="col-md-4">
-                <div ba-panel>
-                <h4>Flight</h4>
-            
+            </uib-accordion-group>
+            <uib-accordion-group panel-class="panel-success bootstrap-panel accordion-panel panel-default">
+                <uib-accordion-heading>
+                <b>Rome</b>
+                </uib-accordion-heading>
+                <div class="col-md-4">
+                    <div ba-panel ba-panel-title="Flight">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="flightsRome">
+                        <li ng-repeat="item in flightsRome" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }} </span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div ba-panel>
-                <h4>Accomodation</h4>
-            
+                <div class="col-md-4">
+                    
+                    <div ba-panel ba-panel-title="Accomodation">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="accommodationRome">
+                        <li ng-repeat="item in accommodationRome" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }}</span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                            
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+                
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div ba-panel>
-                <h4>Package</h4>
-            
+                <div class="col-md-4">
+                    
+                    <div ba-panel ba-panel-title="Tours">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="toursRome">
+                        <li ng-repeat="item in toursRome" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }}</span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                            
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+                
+                
                 </div>
-            </div>
-  </uib-accordion-group>
-  <uib-accordion-group heading="Custom template" panel-class="panel-info bootstrap-panel accordion-panel panel-default">
-    <div class="col-md-4">
-                <div ba-panel>
-                <h4>Flight</h4>
-            
+                    
+            </uib-accordion-group>
+            <uib-accordion-group panel-class="panel-info bootstrap-panel accordion-panel panel-default">
+                <uib-accordion-heading>
+                <b>Athens</b>
+                </uib-accordion-heading>
+                <div class="col-md-4">
+                    <div ba-panel ba-panel-title="Flight">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="flightsAthens">
+                        <li ng-repeat="item in flightsAthens" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }} </span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div ba-panel>
-                <h4>Accomodation</h4>
-            
+                <div class="col-md-4">
+                    
+                    <div ba-panel ba-panel-title="Accomodation">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="accommodationAthens">
+                        <li ng-repeat="item in accommodationAthens" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }}</span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                            
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+                
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div ba-panel>
-                <h4>Package</h4>
-            
+                <div class="col-md-4">
+                    
+                    <div ba-panel ba-panel-title="Tours">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="toursAthens">
+                        <li ng-repeat="item in toursAthens" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }}</span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                            
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+                
+                
                 </div>
-            </div>
-  </uib-accordion-group>
-  <uib-accordion-group panel-class="panel-danger bootstrap-panel accordion-panel panel-default">
-    <uib-accordion-heading>
-      I can have markup, too! <i class="fa pull-right ion-settings"></i>
-    </uib-accordion-heading>
-    <div class="col-md-4">
-                <div ba-panel>
-                <h4>Flight</h4>
-            
+            </uib-accordion-group>
+            <uib-accordion-group panel-class="panel-danger bootstrap-panel accordion-panel panel-default">
+                <uib-accordion-heading>
+                <b>Dublin</b>
+
+                </uib-accordion-heading>
+                <div class="col-md-4">
+                    <div ba-panel ba-panel-title="Flight">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="flightsDublin">
+                        <li ng-repeat="item in flightsDublin" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }} </span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div ba-panel>
-                <h4>Accomodation</h4>
-            
+                <div class="col-md-4">
+                    
+                    <div ba-panel ba-panel-title="Accomodation">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="accommodationDublin">
+                        <li ng-repeat="item in accommodationDublin" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }}</span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                            
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+                
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div ba-panel>
-                <h4>Package</h4>
-            
+                <div class="col-md-4">
+                    
+                    <div ba-panel ba-panel-title="Tours">
+                    <!--<h4>Flight</h4>-->
+                    <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                    
+                    <i ng-click="addToDoItem('',true)" class="add-item-icon ion-plus-round"></i>
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" ui-sortable ng-model="toursDublin">
+                        <li ng-repeat="item in toursDublin" ng-if="!item.deleted" ng-init="activeItem=false"
+                            ng-class="{checked: isChecked, active: activeItem}"
+                            ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::item.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                            <input type="checkbox" ng-model="isChecked">
+                            <span class="cut-with-dots">{{ item[2] }}</span>
+                            <span ><b>{{ item[3] | currency:"$":0}}</b></span>
+                            
+                        </label>
+                        <i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+                
+                
                 </div>
-            </div>
-  </uib-accordion-group>
-</uib-accordion>
+            </uib-accordion-group>
+            </uib-accordion>
             
         </div>
     </div>

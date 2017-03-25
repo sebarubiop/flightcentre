@@ -156,25 +156,36 @@
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-2">
-                                        <label for="Category">Category</label>
+                                        <label for="Category">Flight</label>
                                     </div>
-                                        <div class="col-md-4">
-                                            <select class="form-control" name="Category" ng-model="travelInfo.category">
-                                                <option>First class</option>
-                                                <option>Student</option>
-                                                <option selected>Economy</option>
-                                                <option>Business class</option>
-                                                <option>Economy</option>
-                                            </select>
-                                        </div>
-                                    
+                                    <div class="col-md-2">
+                                        <select class="form-control" name="flight" ng-model="travelInfo.flight">
+                                            <option>First class</option>
+                                            <option>Student</option>
+                                            <option selected>Economy</option>
+                                            <option>Business class</option>
+                                            <option>Economy</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="Category">Accommodation</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select class="form-control" name="accomm" ng-model="travelInfo.accomm">
+                                            <option value="5.00" selected>5 Star</option>
+                                            <option value="4.00">4 Star</option>
+                                            <option value="3.00">3 Star</option>
+                                            <option value="Other">Other</option>
+                                            
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 
                                 <div class="form-group">
-                                    <div class="col-md-22">
+                                    <div class="col-md-2">
                                         <label >More information</label>
                                     </div>
                                     <div class="col-md-10">
@@ -188,7 +199,7 @@
                     <ba-wizard-step title="Finish">
                         <form class="form-horizontal" name="vm.finishForm" novalidate>
                             Congratulations! You have successfully filled the form!
-                            <div class="button-wrapper"><a href="#/bestquote/{{travelInfo.origin}}/{{travelInfo.destination}}/{{travelInfo.category}}/{{travelInfo.duration}}" class="btn btn-success btn-raised">BEST QUOTE</a></div>
+                            <div class="button-wrapper"><a href="#/bestquote/{{travelInfo.origin}}/{{travelInfo.destination}}/{{travelInfo.flight}}/{{travelInfo.accomm}}/{{travelInfo.duration}}" class="btn btn-success btn-raised">BEST QUOTE</a></div>
                             <!--<div class="button-wrapper"><button type="button" ng-click="goPlan()" class="btn btn-danger btn-raised"><b>SHOW RECOMMENDATIONS</b></button></div>-->
                         </form>
                     </ba-wizard-step>

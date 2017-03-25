@@ -11,6 +11,7 @@
     'BlurAdmin.pages.form',
     
     'BlurAdmin.pages.bestquote',
+    'BlurAdmin.pages.recommendation'
   ])
       .config(routeConfig);
 

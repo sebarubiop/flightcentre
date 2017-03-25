@@ -9,7 +9,7 @@
   function routeConfig($stateProvider) {
     $stateProvider
         .state('bestquote', {
-          url: '/bestquote/:origin/:destination/:category/:duration',
+          url: '/bestquote/:origin/:destination/:flight/:accomm/:duration',
           templateUrl: 'app/pages/bestquote/bestquote.html',
           title: 'best quote',
           controller: 'BestQuoteCtrl',
