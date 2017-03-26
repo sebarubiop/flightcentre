@@ -59,7 +59,8 @@
                                     
                                     <div class="form-group" id="scrollable-dropdown-menu">
                                         <label>Destination</label>
-                                        <input name="places" type="text" ng-model="travelInfo.destination" placeholder="Search a Destination" uib-typeahead="place as place.place for place in destinations | filter:{place:$viewValue} | limitTo:50"
+                                        <input ng-if='destinations'  name="places" type="text" ng-model="travelInfo.destination" placeholder="Search a Destination" 
+                                        uib-typeahead="place[0] as p for place in destinations | filter:{p:$viewValue} | limitTo:50"
                                             class="form-control" typeahead-show-hint="true" typeahead-min-length="1" typeahead-focus-first="true" typeahead-no-results="noresult"
                                             typeahead-select-on-blur="true" autocomplete="off">
                                     </div>
