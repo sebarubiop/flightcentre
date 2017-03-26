@@ -8,6 +8,7 @@
   /** @ngInject */
   function BestQuoteCtrl($scope,$stateParams,$http,baConfig) {
     
+    
     console.log($stateParams);
     $scope.request = $stateParams;
 
