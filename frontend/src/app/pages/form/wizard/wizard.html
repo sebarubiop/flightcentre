@@ -200,7 +200,9 @@
                     <ba-wizard-step title="Finish">
                         <form class="form-horizontal" name="vm.finishForm" novalidate>
                             Congratulations! You have successfully filled the form!
-                            <div class="button-wrapper"><a href="#/bestquote/{{travelInfo.origin}}/{{travelInfo.destination}}/{{travelInfo.flight}}/{{travelInfo.accomm}}/{{travelInfo.duration}}" class="btn btn-success btn-raised">BEST QUOTE</a></div>
+                            <div class="button-wrapper"><a href="#/bestquote/{{travelInfo.origin}}/{{travelInfo.destination}}/{{travelInfo.flight}}/{{travelInfo.accomm}}/{{travelInfo.duration}}" class="btn btn-success btn-raised">(1) BEST QUOTE</a></div>
+                            <br>
+                            <div class="button-wrapper"><a href="#/recommendation/{{travelInfo.origin}}" class="btn btn-danger btn-raised">(2) RECOMMENDATIONS</a></div>
                             <!--<div class="button-wrapper"><button type="button" ng-click="goPlan()" class="btn btn-danger btn-raised"><b>SHOW RECOMMENDATIONS</b></button></div>-->
                         </form>
                     </ba-wizard-step>

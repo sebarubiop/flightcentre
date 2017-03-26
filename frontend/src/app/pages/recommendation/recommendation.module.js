@@ -11,7 +11,7 @@
         .state('recommendation', {
           url: '/recommendation/:origin',
           templateUrl: 'app/pages/recommendation/recommendation.html',
-          title: 'Recommendation',
+          title: 'Recommendations',
           controller: 'RecommendationCtrl',
           controllerAs: 'rctrl'
         });
